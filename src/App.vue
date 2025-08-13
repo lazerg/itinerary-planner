@@ -1,30 +1,55 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="min-height-100vh has-background-light">
+    <AirportHero />
+    
+    <div class="container mt-6 mb-6">
+      <div class="columns">
+        <div class="column is-half">
+          <TripCard @result="handleResult" @loading="handleLoading" />
+        </div>
+        <div class="column is-half">
+          <ResultCard 
+            :result="result" 
+            :language="language"
+            :isLoading="isLoading" 
+            :generationTime="generationTime"
+          />
+        </div>
+      </div>
+    </div>
+    
+    <AppFooter />
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue'
+import AirportHero from './components/AirportHero.vue'
+import TripCard from './components/TripCard.vue'
+import ResultCard from './components/ResultCard.vue'
+import AppFooter from './components/AppFooter.vue'
+
+const result = ref('')
+const language = ref('')
+const isLoading = ref(false)
+const generationTime = ref(0)
+let startTime = 0
+
+const handleResult = (newResult: string, newLanguage: string) => {
+  result.value = newResult
+  language.value = newLanguage
+  generationTime.value = Math.round((Date.now() - startTime) / 1000)
+}
+
+const handleLoading = (loading: boolean) => {
+  isLoading.value = loading
+  if (loading) {
+    startTime = Date.now()
+  }
+}
+
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+@import './styles/global.css';
 </style>

@@ -9,6 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.0.0",
+    "bulma": "^1.0.4",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.1",
     "vue": "^3.5.18"
   },
   "devDependencies": {

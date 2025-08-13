@@ -1,0 +1,159 @@
+/* ============================================================================
+   ENHANCED FORM STYLES
+   ============================================================================ */
+.enhanced-form {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.form-header {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.animated-form .animated-field {
+  animation: slideInLeft 0.5s ease-out;
+  animation-fill-mode: both;
+  margin-bottom: 1.5rem;
+}
+
+.animated-field:nth-child(1) { animation-delay: 0.1s; }
+.animated-field:nth-child(2) { animation-delay: 0.2s; }
+.animated-field:nth-child(3) { animation-delay: 0.3s; }
+.animated-field:nth-child(4) { animation-delay: 0.4s; }
+.animated-field:nth-child(5) { animation-delay: 0.5s; }
+.animated-field:nth-child(6) { animation-delay: 0.6s; }
+.animated-field:nth-child(7) { animation-delay: 0.7s; }
+
+.enhanced-label {
+  font-weight: 600;
+  color: #363636;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.enhanced-input,
+.enhanced-select select {
+  border: 2px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.enhanced-input:focus,
+.enhanced-select select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+.enhanced-input:hover,
+.enhanced-select select:hover {
+  border-color: #667eea;
+}
+
+.help {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 6px;
+  border-left: 3px solid rgba(102, 126, 234, 0.3);
+}
+
+.submit-section {
+  margin-top: 2rem;
+  animation: slideInUp 0.6s ease-out 0.8s;
+  animation-fill-mode: both;
+}
+
+.enhanced-submit {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.enhanced-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.enhanced-submit:hover::before {
+  left: 100%;
+}
+
+.enhanced-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.enhanced-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rotating {
+  animation: rotate 1s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
