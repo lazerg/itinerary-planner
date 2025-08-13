@@ -86,7 +86,7 @@ const exportToPDF = async () => {
     
     // Create PDF
     const pdf = new jsPDF('p', 'mm', 'a4')
-    const imgData = canvas.toDataURL('image/png')
+    // const imgData = canvas.toDataURL('image/png')
     
     // Calculate dimensions
     const pdfWidth = pdf.internal.pageSize.getWidth()
@@ -140,6 +140,7 @@ const exportToPDF = async () => {
     pdf.text('Travel Itinerary - FarkhodMaxTravel Group', pdfWidth / 2, 6, { align: 'center' })
     
     // Add footer to all pages
+    // @ts-ignore
     const pageCount = pdf.internal.getNumberOfPages()
     for (let i = 1; i <= pageCount; i++) {
       pdf.setPage(i)
