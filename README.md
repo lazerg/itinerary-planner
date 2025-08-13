@@ -84,10 +84,37 @@ yarn preview
 
 ### 🚀 Deploy and Publish
 
-**For static hosting (Netlify, Vercel, GitHub Pages):**
+#### **Automatic GitHub Pages Deployment (Recommended)**
+
+This project includes a GitHub Actions workflow that automatically builds and deploys to GitHub Pages on every push to the main branch.
+
+**Setup Steps:**
+1. **Enable GitHub Pages in your repository:**
+   - Go to Settings → Pages
+   - Source: "GitHub Actions"
+
+2. **Add OpenAI API Key to GitHub Secrets:**
+   - Go to Settings → Secrets and Variables → Actions
+   - Add new repository secret: `VITE_OPENAI_API_KEY`
+   - Set the value to your OpenAI API key
+
+3. **Push to main branch:**
+   ```bash
+   git add .
+   git commit -m "Setup GitHub Pages deployment"
+   git push origin main
+   ```
+
+4. **Access your deployed app:**
+   - Your app will be available at: `https://[username].github.io/itinerary-planner/`
+   - Check the Actions tab to monitor deployment status
+
+#### **Manual Deployment Options**
+
+**For static hosting (Netlify, Vercel):**
 1. Build the project: `yarn build`
 2. Deploy the `dist` folder to your hosting service
-3. Ensure environment variables are set in your hosting platform
+3. Set environment variable: `VITE_OPENAI_API_KEY`
 
 **For Docker deployment:**
 ```dockerfile
@@ -102,7 +129,25 @@ CMD ["yarn", "preview", "--host"]
 ```
 
 **Environment Variables in Production:**
-Make sure to set `VITE_OPENAI_API_KEY` in your production environment.
+- `VITE_OPENAI_API_KEY`: Your OpenAI API key (required for AI functionality)
+
+## 🔄 CI/CD Pipeline
+
+This project includes a robust GitHub Actions workflow that:
+
+- **Automatic Building**: Builds the project on every push and pull request
+- **Dependency Caching**: Uses Yarn cache for faster builds
+- **Environment Security**: Safely handles API keys through GitHub Secrets
+- **GitHub Pages Deployment**: Automatically deploys to GitHub Pages on main branch pushes
+- **Build Optimization**: Creates optimized production bundles with code splitting
+
+**Workflow Features:**
+- ✅ Node.js 18 environment
+- ✅ Yarn package manager
+- ✅ Build artifact upload
+- ✅ Automatic GitHub Pages deployment
+- ✅ Concurrent deployment protection
+- ✅ Manual workflow dispatch option
 
 ## 🎨 Features in Detail
 
